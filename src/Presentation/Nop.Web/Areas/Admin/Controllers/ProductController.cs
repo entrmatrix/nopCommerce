@@ -1549,6 +1549,12 @@ namespace Nop.Web.Areas.Admin.Controllers
                     if (_workContext.CurrentVendor != null && product.VendorId != _workContext.CurrentVendor.Id)
                         continue;
 
+                    if (product.Id == model.ProductId)
+                    {
+                        ViewBag.TryToAddSelfGroupedProduct = true;
+                        continue;
+                    }
+
                     product.ParentGroupedProductId = model.ProductId;
                     _productService.UpdateProduct(product);
                 }

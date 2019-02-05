@@ -1,10 +1,18 @@
 ﻿@model AddAssociatedProductSearchModel
 
+@using System.Text.Encodings.Web
 @{
     Layout = "_AdminPopupLayout";
-    
+
     //page title
     ViewBag.Title = T("Admin.Catalog.Products.AssociatedProducts.AddNew").Text;
+}
+
+@if (ViewBag.TryToAddSelfGroupedProduct == true)
+{
+    <script>
+        alert('@Html.Raw(JavaScriptEncoder.Default.Encode(T("Admin.Catalog.Products.AssociatedProducts.TryToAddSelfGroupedProduct").Text))');
+    </script>
 }
 
 @if (ViewBag.RefreshPage == true)
